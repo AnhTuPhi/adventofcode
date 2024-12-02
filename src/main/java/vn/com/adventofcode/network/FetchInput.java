@@ -82,7 +82,7 @@ public class FetchInput {
 
     public static void writeFile(File file, String content) {
         try {
-            Files.write(file.toPath(), content.getBytes(StandardCharsets.UTF_8));
+            Files.writeString(file.toPath(), content);
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }

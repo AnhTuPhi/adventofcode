@@ -40,9 +40,9 @@ public class EitherList<A, B> extends ArrayList<Either<A, B>> {
         for (Either<A, B> either : this) {
             if (either.isA()) {
                 c = r1.apply(either.getA(), c);
-            } else {
-                c = r2.apply(either.getB(), c);
+                continue;
             }
+            c = r2.apply(either.getB(), c);
         }
         return c;
     }

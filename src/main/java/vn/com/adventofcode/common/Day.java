@@ -28,7 +28,7 @@ public abstract class Day {
     private Object solutionPart1;
     private Object solutionPart2;
 
-    public Day(int year, int day) {
+    protected Day(int year, int day) {
         this.year = year;
         this.day = day;
     }
@@ -61,10 +61,12 @@ public abstract class Day {
 
     public void printParts() {
         solutionPart1 = part1();
-        if (solutionPart1 instanceof Optional) solutionPart1 = ((Optional<?>) solutionPart1).get();
+        if (solutionPart1 instanceof Optional) solutionPart1 = ((Optional<?>) solutionPart1).isPresent()
+                ? ((Optional<?>) solutionPart1).get() : null;
         System.out.println("Part 1: " + solutionPart1);
         solutionPart2 = part2();
-        if (solutionPart2 instanceof Optional) solutionPart2 = ((Optional<?>) solutionPart2).get();
+        if (solutionPart2 instanceof Optional) solutionPart2 = ((Optional<?>) solutionPart2).isPresent()
+                ? ((Optional<?>) solutionPart2).get() : null;
         System.out.println("Part 2: " + solutionPart2);
     }
 

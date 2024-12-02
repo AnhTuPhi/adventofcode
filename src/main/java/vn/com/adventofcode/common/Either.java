@@ -14,11 +14,11 @@ public record Either<A, B>(Optional<A> a, Optional<B> b) {
     }
 
     public A getA() {
-        return a.get();
+        return a.orElse(null);
     }
 
     public B getB() {
-        return b.get();
+        return b.orElse(null);
     }
 
     public boolean isA() {
@@ -42,8 +42,8 @@ public record Either<A, B>(Optional<A> a, Optional<B> b) {
 
     @Override
     public int hashCode() {
-        int result = a != null ? a.hashCode() : 0;
-        result = 31 * result + (b != null ? b.hashCode() : 0);
+        int result = a.isPresent() ? a.hashCode() : 0;
+        result = 31 * result + (b.isPresent() ? b.hashCode() : 0);
         return result;
     }
 }
